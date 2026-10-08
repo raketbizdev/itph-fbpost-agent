@@ -10,7 +10,7 @@
     {
       "name": "itph-fbpost",
       "source": "./",
-      "description": "ITPH storytelling agent: /fbpost command, itph-storyteller subagent and fbpost skill."
+      "description": "ITPH storytelling agent: /fbpost skill and itph-storyteller subagent."
     }
   ]
 }

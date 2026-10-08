@@ -1,6 +1,7 @@
 ---
 name: fbpost
 description: Researches an IT topic and writes 5 distinct ITPH-style Facebook stories for Filipino readers, each with an image teaser and a copy/paste ChatGPT image prompt. Does not generate images. Use when the user asks for ITPH / IT Philippines Facebook posts, IT storytelling, image teasers or image prompts, or wants post insights analysed.
+argument-hint: --topic "GCash failed transfers" [--language english|taglish] [--length short|standard] [--count 5]
 ---
 
 # ITPH Storytelling Agent
@@ -266,3 +267,9 @@ When the user supplies published posts, Facebook insights, or comments:
 Make readers recognize the problem. Surprise them with something real. Give them a reason to open the post. Explain the technology through a compelling story. Connect it to their lives, work, money, or security. Leave a genuine human decision or tradeoff for discussion.
 
 The image must make readers curious, not satisfied. The full post must make readers understand, without telling them what to think.
+
+---
+
+## This request
+
+$ARGUMENTS

@@ -15,6 +15,18 @@ The IT Philippines (ITPH) storytelling agent. Give it a tech topic and it resear
 
 Every run also includes a topic assessment (five 1–5 scores) and a verification section with sources and open questions.
 
+## Where it works
+
+| Where | How to get it |
+| --- | --- |
+| Claude Code in the terminal | Option 1 or 2 below |
+| Claude Code in VS Code (and Cursor or other VS Code forks) | Same install. The extension reads the same `~/.claude` folder and plugins as the terminal. |
+| Claude Code in the desktop app | Same install |
+| Claude Code on the web (claude.ai/code) and cloud sessions | Option 3: add it to your project's `.claude/settings.json` |
+| ChatGPT, Claude.ai Projects, Gemini and other tools | Option 4: paste the prompt |
+
+Install once on your computer and `/fbpost` works in the terminal, VS Code and the desktop app. Restart Claude Code (or reload the VS Code window) after installing.
+
 ## Install
 
 Pick one option.
@@ -34,15 +46,28 @@ Inside Claude Code:
 curl -fsSL https://raw.githubusercontent.com/raketbizdev/itph-fbpost-agent/main/install.sh | bash
 ```
 
-This copies the command, subagent and skill into `~/.claude/`. Restart Claude Code afterwards.
+This copies the skill and the subagent into `~/.claude/`. Restart Claude Code afterwards. To install from a clone instead, run `git clone https://github.com/raketbizdev/itph-fbpost-agent.git` and then `./itph-fbpost-agent/install.sh`.
 
-### Option 3: Copy the files yourself
+Use Option 1 or Option 2, not both, or `/fbpost` will show up twice.
 
-```bash
-git clone https://github.com/raketbizdev/itph-fbpost-agent.git
-cd itph-fbpost-agent
-./install.sh
+### Option 3: Claude Code on the web, cloud sessions and shared team projects
+
+Cloud sessions don't see what is installed on your computer, so add the plugin to the project instead. Put this in `.claude/settings.json` in your project's repo and commit it:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "itph": {
+      "source": { "source": "github", "repo": "raketbizdev/itph-fbpost-agent" }
+    }
+  },
+  "enabledPlugins": {
+    "itph-fbpost@itph": true
+  }
+}
 ```
+
+Anyone who opens that project in Claude Code (web, terminal or VS Code) gets `/fbpost`. On their own machines, Claude Code asks them to trust the marketplace the first time.
 
 ### Option 4: Outside Claude Code (Claude.ai Projects, ChatGPT custom GPTs, Gemini Gems, other tools)
 
@@ -72,17 +97,17 @@ You can also ask in plain words, for example: "use the itph-storyteller agent to
 | Path | What it is |
 | --- | --- |
 | `prompts/itph-storyteller.md` | **The source of truth.** The full agent instructions. Edit this file. |
-| `commands/fbpost.md` | The `/fbpost` slash command (generated) |
+| `skills/fbpost/SKILL.md` | The skill you run as `/fbpost`. Also works in other skill-aware tools (generated) |
 | `agents/itph-storyteller.md` | Claude Code subagent (generated) |
-| `skills/fbpost/SKILL.md` | Skill, for Claude Code and other skill-aware tools (generated) |
 | `.claude-plugin/` | Plugin and marketplace manifests |
+| `.claude/settings.json` | Turns the plugin on for anyone who opens this repo in Claude Code |
 | `install.sh` | Installer into `~/.claude/` |
 | `scripts/build.sh` | Regenerates the three generated files from the prompt |
 
 ## Changing the agent
 
 1. Edit `prompts/itph-storyteller.md`.
-2. Run `./scripts/build.sh`.
+2. Run `./scripts/build.sh`. It regenerates the skill and the subagent.
 3. Commit and push. Plugin users get the update with `/plugin marketplace update itph`; script users re-run `install.sh`.
 
 ## Ground rules the agent follows

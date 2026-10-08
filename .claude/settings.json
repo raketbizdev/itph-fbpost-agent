@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "itph": {
+      "source": { "source": "github", "repo": "raketbizdev/itph-fbpost-agent" }
+    }
+  },
+  "enabledPlugins": {
+    "itph-fbpost@itph": true
+  }
+}
