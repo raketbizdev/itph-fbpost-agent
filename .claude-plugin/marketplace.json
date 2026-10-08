@@ -1,0 +1,16 @@
+{
+  "name": "itph",
+  "owner": {
+    "name": "IT Philippines"
+  },
+  "metadata": {
+    "description": "IT Philippines content tools for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "itph-fbpost",
+      "source": "./",
+      "description": "ITPH storytelling agent: /fbpost command, itph-storyteller subagent and fbpost skill."
+    }
+  ]
+}

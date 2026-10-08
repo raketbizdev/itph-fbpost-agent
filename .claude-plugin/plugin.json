@@ -1,0 +1,8 @@
+{
+  "name": "itph-fbpost",
+  "version": "3.0.0",
+  "description": "ITPH storytelling agent: researched Facebook posts, image teasers and ChatGPT image prompts about technology Filipinos use.",
+  "author": { "name": "IT Philippines" },
+  "license": "MIT",
+  "keywords": ["facebook", "storytelling", "philippines", "content", "itph"]
+}
